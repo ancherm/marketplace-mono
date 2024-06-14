@@ -6,11 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="6d4f79b6-333c-492a-b7fd-dee3bd2f96b9" name="Changes" comment="init project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/PhotoProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/PhotoProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repos/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repos/ProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono/server",
+    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono/server/src/main/java/ru/marketplace/server/entities",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
@@ -45,8 +59,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\server\src\main\java\ru\marketplace\server\entities" />
       <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\server" />
       <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.marketplace.server.entities" />
     </key>
   </component>
   <component name="RunManager" selected="Docker.server: Compose Deployment">
@@ -82,7 +100,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718360600249</updated>
-      <workItem from="1718360601556" duration="1988000" />
+      <workItem from="1718360601556" duration="4330000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1718362601089</created>
@@ -98,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718362627473</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init project">
+      <created>1718362725675</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718362725675</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
