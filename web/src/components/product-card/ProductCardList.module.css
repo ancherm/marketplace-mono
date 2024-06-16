@@ -1,0 +1,10 @@
+.productCardList {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(8, 1fr);
+    align-content: start;
+    gap: 30px;
+    padding: 20px;
+    background-color: cadetblue;
+    border: 1px solid black;
+}
