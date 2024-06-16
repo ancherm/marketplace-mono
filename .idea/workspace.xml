@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="edit web">
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="WEB: create grid-catalog">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/product-card/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/product-card/ProductCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/product-card/ProductCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/product-card/ProductCard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/components/product-card/ProductCardList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/components/product-card/ProductCardList.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,13 +58,16 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono",
+    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono/web/pics",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
     "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "spring.configuration.checksum": "cf1e8c14e54505f60aa10ceb8d5d8ab3",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -67,6 +75,15 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\web\pics" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\web\public" />
+      <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\web\src\components\product-card" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -75,7 +92,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServerApplication">
+  <component name="RunManager" selected="Docker.server: Compose Deployment">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -85,6 +102,14 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="server/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
     </configuration>
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/web/package.json" />
@@ -109,6 +134,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="Docker.server: Compose Deployment" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -122,6 +148,8 @@
       <option name="presentableId" value="Default" />
       <updated>1718379267433</updated>
       <workItem from="1718379269576" duration="4892000" />
+      <workItem from="1718498356111" duration="5655000" />
+      <workItem from="1718567690798" duration="4996000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -130,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718379753441</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="WEB: create grid-catalog">
+      <created>1718504032365</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718504032365</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +184,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="edit web" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit web" />
+    <MESSAGE value="WEB: create grid-catalog" />
+    <option name="LAST_COMMIT_MESSAGE" value="WEB: create grid-catalog" />
   </component>
 </project>

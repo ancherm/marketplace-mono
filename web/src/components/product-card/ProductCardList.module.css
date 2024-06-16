@@ -1,7 +1,7 @@
 .productCardList {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     align-content: start;
     gap: 30px;
     padding: 20px;

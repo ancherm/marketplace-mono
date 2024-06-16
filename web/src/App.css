@@ -13,8 +13,9 @@
 .App {
   width: 1680px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  /*align-items: center;*/
+  align-items: center;
   min-height: 100vh;
   background-color: #e77171;
 }
