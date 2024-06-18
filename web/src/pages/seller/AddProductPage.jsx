@@ -1,75 +1,135 @@
-import React, { useState } from 'react';
-import InputField from "../../components/ui/input/InputField";
-import Button from "@mui/material/Button";
-import classes from "./AddProductPage.module.css";
-import Select from "../../components/ui/select/Select";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import SellerService from "../../API/SellerService";
 
 const AddProductPage = () => {
-    const [characteristicsCount, setCharacteristicsCount] = useState(1);
+    const [product, setProduct] = useState({
+        name: '',
+        category: '',
+        price: '',
+        quantity: '',
+        description: '',
+        photos: [],
+        characteristics: [{ key: '', value: '' }]
+    });
 
-    const handleCharacteristicsCountChange = (value) => {
-        setCharacteristicsCount(Number(value));
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/categories/get-all');
+                setCategories(response.data);
+            } catch (error) {
+                console.error('Error fetching categories', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setProduct((prevProduct) => ({
+            ...prevProduct,
+            [name]: value,
+        }));
     };
 
-    const renderCharacteristicsFields = () => {
-        let fields = [];
-        for (let i = 0; i < characteristicsCount; i++) {
-            fields.push(
-                <InputField
-                    key={i}
-                    type="text"
-                    placeholder={`Характеристика ${i + 1}`}
-                />
-            );
+    const handleFileChange = (e) => {
+        const files = Array.from(e.target.files);
+        setProduct((prevProduct) => ({
+            ...prevProduct,
+            photos: files,
+        }));
+    };
+
+    const handleAttributeChange = (index, e) => {
+        const { name, value } = e.target;
+        const characteristics = [...product.characteristics];
+        characteristics[index][name] = value;
+        setProduct({ ...product, characteristics });
+    };
+
+    const addCharacteristic = () => {
+        setProduct({ ...product, characteristics: [...product.characteristics, { key: '', value: '' }] });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('name', product.name);
+        formData.append('category', product.category);
+        formData.append('price', product.price);
+        formData.append('quantity', product.quantity);
+        formData.append('description', product.description);
+
+        // Append photos with the correct name 'photos'
+        product.photos.forEach((photo, index) => {
+            formData.append('photos', photo); // 'photos' should match the server's expected parameter name
+        });
+
+        // Append characteristics as well, using nested structure
+        product.characteristics.forEach((characteristic, index) => {
+            formData.append(`characteristics[${index}][key]`, characteristic.key);
+            formData.append(`characteristics[${index}][value]`, characteristic.value);
+        });
+
+        try {
+            await SellerService.addProduct(formData); // Ensure to await the promise here
+            alert('Product added successfully');
+        } catch (error) {
+            console.error('Error adding product', error);
+            alert('Failed to add product');
         }
-        return fields;
     };
+
 
     return (
-        <div className={classes.form}>
-            <h1>Добавление товара</h1>
-            <form style={{ width: "75%", marginTop: "30px", display: "flex", flexDirection: "column" }}>
-                <InputField type="text" placeholder="Название" />
-                <Select
-                    defaultValue="Категория"
-                    option={[
-                        { value: "Быт", name: "Быт" },
-                        { value: "Техника", name: "Техника" },
-                    ]}
-                />
-                <InputField type="number" min="0" placeholder="Цена" />
-                <InputField type="number" min="1" placeholder="Количество" />
-                <InputField type="text" placeholder="Описание" />
-                <Select
-                    defaultValue="Количество характеристик"
-                    option={[
-                        { value: 1, name: "1" },
-                        { value: 2, name: "2" },
-                        { value: 3, name: "3" },
-                        { value: 4, name: "4" },
-                        { value: 5, name: "5" },
-                    ]}
-                    onChange={handleCharacteristicsCountChange}
-                />
-                <div style={{paddingLeft: "20px", paddingRight: "20px", display: "flex", flexDirection: "column"}}>
-                    {renderCharacteristicsFields()}
-                </div>
-                <InputField type="file" accept="image/*" placeholder="Фото товара" />
-                <Button
-                    variant="contained"
-                    style={{
-                        borderRadius: "10px",
-                        fontSize: "14px",
-                        cursor: "pointer",
-                        backgroundColor: "limegreen",
-                        color: "black",
-                        marginTop: "20px"
-                    }}
-                >
-                    Добавить товар
-                </Button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Название</label>
+                <input type="text" name="name" value={product.name} onChange={handleChange} required />
+            </div>
+            <div>
+                <label>Категория</label>
+                <select name="category" value={product.category} onChange={handleChange} required>
+                    <option value="">Выберите категорию</option>
+                    {categories.map((category) => (
+                        <option key={category.id} value={category.name}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div>
+                <label>Цена</label>
+                <input type="number" name="price" value={product.price} onChange={handleChange} required />
+            </div>
+            <div>
+                <label>Количество</label>
+                <input type="number" name="quantity" value={product.quantity} onChange={handleChange} required />
+            </div>
+            <div>
+                <label>Описание</label>
+                <textarea name="description" value={product.description} onChange={handleChange} />
+            </div>
+            <div>
+                <label>Фотографии</label>
+                <input type="file" accept="image/*" name="photos" multiple onChange={handleFileChange} />
+
+                <h3>Характеристики</h3>
+                {product.characteristics.map((characteristic, index) => (
+                    <div key={index}>
+                        <input type="text" name="key" placeholder="Название характеристики" value={characteristic.key} onChange={(e) => handleAttributeChange(index, e)} />
+                        <input type="text" name="value" placeholder="Значение характеристики" value={characteristic.value} onChange={(e) => handleAttributeChange(index, e)} />
+                    </div>
+                ))}
+                <button type="button" onClick={addCharacteristic}>Добавить характеристику</button>
+            </div>
+            <button type="submit">Добавить товар</button>
+        </form>
     );
 };
 

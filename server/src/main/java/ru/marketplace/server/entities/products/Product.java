@@ -2,16 +2,18 @@ package ru.marketplace.server.entities.products;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ru.marketplace.server.entities.seller.Seller;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity @Table(name = "products")
 @Builder
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +28,25 @@ public class Product {
     @Column(nullable = false)
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<PhotoProduct> photos;
+    @Column(nullable = false)
+    private Integer quantity;
+
+    @Lob
+    private byte[] photo;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ProductAttribute> attributes = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ProductReview> reviews = new HashSet<>();
+    private List<ProductAttribute> attributes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductReview> reviews = new ArrayList<>();
+
+
 }

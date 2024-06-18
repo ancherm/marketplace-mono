@@ -15,13 +15,14 @@ public class ProductAttribute {
     private Long id;
 
     @Column(nullable = false)
-    private String attributeName;
+    private String name;
 
     @Column(nullable = false)
-    private String attributeValue;
+    private String value;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
 
 }
