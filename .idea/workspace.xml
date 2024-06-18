@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="WEB: add new product from seller">
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="добавляется товар и отображается в каталоге">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/ProductAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/products/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/products/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/API/SellerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/API/SellerService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/pages/seller/AddProductPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/pages/seller/AddProductPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +147,7 @@
       <workItem from="1718498356111" duration="5655000" />
       <workItem from="1718567690798" duration="5318000" />
       <workItem from="1718642732322" duration="14537000" />
-      <workItem from="1718718645816" duration="14770000" />
+      <workItem from="1718718645816" duration="16726000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -185,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718649704568</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="добавляется товар и отображается в каталоге">
+      <created>1718751124073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718751124073</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +206,7 @@
     <MESSAGE value="WEB: create grid-catalog" />
     <MESSAGE value="WEB: add Navbar(basic), edit ProductCard" />
     <MESSAGE value="WEB: add new product from seller" />
-    <option name="LAST_COMMIT_MESSAGE" value="WEB: add new product from seller" />
+    <MESSAGE value="добавляется товар и отображается в каталоге" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавляется товар и отображается в каталоге" />
   </component>
 </project>

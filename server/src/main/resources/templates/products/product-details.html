@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Itemplace Market - Product Details</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #FFFFFF;
+        }
+        .navbar {
+            background-color: #0082e6;
+        }
+        .navbar-brand {
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .product-details-container {
+            display: flex;
+            padding: 20px;
+        }
+        .product-image {
+            width: 50%;
+            max-width: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-info {
+            margin-left: 20px;
+        }
+        .product-price {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        .product-description {
+            margin-top: 20px;
+        }
+        .add-to-cart-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .review-form {
+            margin-top: 20px;
+        }
+        .review-list {
+            margin-top: 20px;
+        }
+        .review-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .star-rating {
+            font-size: 20px;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            color: #ccc;
+            float: right;
+            padding: 5px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label {
+            color: #f0c000;
+        }
+        .star-rating input:hover ~ label {
+            color: #f0c000;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRICING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BLOG</a>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="#">R</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="product-details-container">
+        <img th:src="@{'/images/' + ${product.id}}" alt="Product Image" class="product-image" />
+        <div class="product-info">
+            <h2 th:text="${product.name}">Product Name</h2>
+            <div class="product-price" th:text="${product.price} + ' ₽'">500 ₽</div>
+            <ul>
+                <li th:each="attribute : ${product.attributes}" th:text="${attribute.name} + ': ' + ${attribute.value}">Характеристика 1</li>
+            </ul>
+            <button class="add-to-cart-btn">В КОРЗИНУ</button>
+            <p class="product-description" th:text="${product.description}">Описание товара...</p>
+        </div>
+    </div>
+    <div class="review-form">
+        <h3>Оставить отзыв</h3>
+        <form th:action="@{/catalog/{id}/review(id=${product.id})}" method="post">
+            <div class="form-group">
+                <label for="reviewerName">Ваше имя</label>
+                <input type="text" class="form-control" id="reviewerName" name="reviewerName" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Отзыв</label>
+                <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="rating">Рейтинг</label>
+                <div id="rating" class="star-rating">
+                    <input type="radio" id="5-stars" name="rating" value="5" required/><label for="5-stars">★</label>
+                    <input type="radio" id="4-stars" name="rating" value="4"/><label for="4-stars">★</label>
+                    <input type="radio" id="3-stars" name="rating" value="3"/><label for="3-stars">★</label>
+                    <input type="radio" id="2-stars" name="rating" value="2"/><label for="2-stars">★</label>
+                    <input type="radio" id="1-star" name="rating" value="1"/><label for="1-star">★</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+    </div>
+    <div class="review-list">
+        <h3>Отзывы</h3>
+        <div th:each="review : ${product.reviews}" class="review-item">
+            <h5 th:text="${review.reviewerName}">Reviewer Name</h5>
+            <div>
+                <span th:each="i : ${#numbers.sequence(1, review.rating)}" class="star" style="color: #f0c000;">★</span>
+                <span th:each="i : ${#numbers.sequence(review.rating + 1, 5)}" class="star" style="color: #ccc;">★</span>
+            </div>
+            <p th:text="${review.reviewText}">Review Content</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
