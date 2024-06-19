@@ -18,8 +18,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ProductService {
 
-    private ProductRepository productRepository;
-    private ProductAttributeRepository productAttributeRepository;
+    private final ProductRepository productRepository;
+    private final ProductAttributeRepository productAttributeRepository;
 
     public List<Product> findAll() {
         return productRepository.findAll();

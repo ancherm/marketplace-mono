@@ -19,6 +19,7 @@ public class ProductController {
 
     private final ProductService productService;
     private final ReviewService reviewService;
+
     @GetMapping("/catalog")
     public String getProducts(Model model) {
         List<Product> products = productService.findAll();
@@ -40,15 +41,19 @@ public class ProductController {
     @PostMapping("/catalog/{id}/review")
     public String addReview(@PathVariable Long id, @RequestParam String reviewerName, @RequestParam String content, @RequestParam int rating) {
         Optional<Product> productOptional = productService.getProductById(id);
-        if (productOptional.isPresent()) {
-            Product product = productOptional.get();
-            ProductReview review = new ProductReview();
-            review.setReviewerName(reviewerName);
-            review.setReviewText(content);
-            review.setRating(rating);
-            review.setProduct(product);
-            reviewService.save(review);
-        }
+
+        productOptional.map(product -> {
+                    ProductReview review = new ProductReview();
+                    review.setReviewerName(reviewerName);
+                    review.setReviewText(content);
+                    review.setRating(rating);
+                    review.setProduct(product);
+                    return review;
+
+                }
+
+        ).ifPresent(reviewService::save);
+
         return "redirect:/catalog/" + id;
     }
 }

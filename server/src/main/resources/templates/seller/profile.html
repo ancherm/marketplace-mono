@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль продавца</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .info {
+            margin-top: 20px;
+        }
+        .info label {
+            display: block;
+            font-weight: bold;
+        }
+        .info span {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Профиль продавца</h1>
+    <div class="info">
+        <label>Имя пользователя:</label>
+        <span th:text="${user.username}"></span>
+
+        <label>Роль:</label>
+        <span th:text="${user.role}"></span>
+
+        <!-- Дополнительная информация о продавце -->
+    </div>
+</div>
+</body>
+</html>

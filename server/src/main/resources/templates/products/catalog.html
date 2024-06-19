@@ -59,6 +59,11 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        function redirectToProduct(productId) {
+            window.location.href = '/catalog/' + productId;
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -76,6 +81,9 @@
             </li>
         </ul>
         <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="/cart">КОРЗИНА</a>
+        </div>
+        <div class="navbar-nav ml-auto">
             <a class="nav-link" href="#">R</a>
         </div>
     </div>
@@ -92,12 +100,11 @@
     </div>
     <div class="grid-container">
         <div th:each="product : ${products}">
-            <a th:href="@{'/catalog/' + ${product.id}}" class="product-card">
+            <div class="product-card" th:onclick="'redirectToProduct(' + ${product.id} + ')'">
                 <img th:src="@{'/images/' + ${product.id}}" alt="Product Image" class="product-image" />
                 <div class="product-name" th:text="${product.name}">Product Name</div>
                 <div class="product-price" th:text="${product.price} + ' ₽'">TEXT_PRICE ₽</div>
-
-            </a>
+            </div>
             <button class="add-to-cart-btn">В КОРЗИНУ</button>
         </div>
     </div>

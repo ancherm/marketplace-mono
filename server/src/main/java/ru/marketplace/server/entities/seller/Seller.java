@@ -3,6 +3,7 @@ package ru.marketplace.server.entities.seller;
 import jakarta.persistence.*;
 import lombok.*;
 import ru.marketplace.server.entities.products.Product;
+import ru.marketplace.server.entities.users.User;
 
 import java.util.ArrayList;
 import java.util.List;

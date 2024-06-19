@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в аккаунт</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Вход в аккаунт</h1>
+<form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="login" />
+    <input type="password" name="password" placeholder="password" />
+    <button type="submit">Продолжить</button>
+    <div class="links">
+        <a th:href="@{/registration}">Нет аккаунта? Зарегистрироваться</a>
+        <a th:href="@{/login/seller}">Войти как продавец</a>
+    </div>
+</form>
+</body>
+</html>

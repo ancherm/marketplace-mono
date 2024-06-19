@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="добавляется товар и отображается в каталоге">
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="Добавлены детали продукта">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/seller/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/seller/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -43,33 +48,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono/web/pics",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "spring.configuration.checksum": "cf1e8c14e54505f60aa10ceb8d5d8ab3",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/LearningAtUnivercity/Semester3/marketplace-mono/web/pics&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;cf1e8c14e54505f60aa10ceb8d5d8ab3&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\web\pics" />
@@ -129,8 +134,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="Docker.server: Compose Deployment" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -147,7 +152,8 @@
       <workItem from="1718498356111" duration="5655000" />
       <workItem from="1718567690798" duration="5318000" />
       <workItem from="1718642732322" duration="14537000" />
-      <workItem from="1718718645816" duration="16726000" />
+      <workItem from="1718718645816" duration="18247000" />
+      <workItem from="1718793413877" duration="14320000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -184,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718751124073</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Добавлены детали продукта">
+      <created>1718753667169</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718753667169</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +220,7 @@
     <MESSAGE value="WEB: add Navbar(basic), edit ProductCard" />
     <MESSAGE value="WEB: add new product from seller" />
     <MESSAGE value="добавляется товар и отображается в каталоге" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавляется товар и отображается в каталоге" />
+    <MESSAGE value="Добавлены детали продукта" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены детали продукта" />
   </component>
 </project>

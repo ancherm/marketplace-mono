@@ -94,7 +94,7 @@
             </li>
         </ul>
         <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="#">R</a>
+            <a class="nav-link" th:href="@{/cart}">CART</a>
         </div>
     </div>
 </nav>
@@ -107,7 +107,11 @@
             <ul>
                 <li th:each="attribute : ${product.attributes}" th:text="${attribute.name} + ': ' + ${attribute.value}">Характеристика 1</li>
             </ul>
-            <button class="add-to-cart-btn">В КОРЗИНУ</button>
+            <form th:action="@{/cart/add}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <input type="hidden" name="quantity" value="1" />
+                <button type="submit" class="add-to-cart-btn">В КОРЗИНУ</button>
+            </form>
             <p class="product-description" th:text="${product.description}">Описание товара...</p>
         </div>
     </div>
