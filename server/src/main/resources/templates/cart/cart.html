@@ -91,6 +91,12 @@
             <h3>Общая сумма: <span th:text="${totalPrice} + ' ₽'">0 ₽</span></h3>
         </div>
         <form th:action="@{/cart/checkout}" method="post">
+            <div class="form-group">
+                <label for="deliveryPoint">Выберите пункт самовывоза</label>
+                <select id="deliveryPoint" name="deliveryPoint" class="form-control" required>
+                    <option th:each="point : ${deliveryPoints}" th:value="${point.id}" th:text="${point.title} + ' - ' + ${point.address}"></option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Оформить заказ</button>
         </form>
     </div>

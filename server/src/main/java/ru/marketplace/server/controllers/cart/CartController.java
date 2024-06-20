@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.marketplace.server.entities.cart.Cart;
+import ru.marketplace.server.entities.delivery.PointDelivery;
 import ru.marketplace.server.entities.products.Product;
 import ru.marketplace.server.entities.users.User;
 import ru.marketplace.server.repositories.users.UserRepository;
 import ru.marketplace.server.services.cart.CartService;
+import ru.marketplace.server.services.delivery.PointDeliveryService;
 import ru.marketplace.server.services.products.ProductService;
 
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,6 +32,7 @@ public class CartController {
     private final CartService cartService;
     private final ProductService productService;
     private final UserRepository userRepository;
+    private final PointDeliveryService pointDeliveryService;
 
     @GetMapping("/cart")
     public String viewCart(Model model, Principal principal, Authentication authentication) {
@@ -47,6 +51,9 @@ public class CartController {
 
         BigDecimal totalPrice = cartService.calculateTotalPrice(cart);
         model.addAttribute("totalPrice", totalPrice);
+
+        List<PointDelivery> deliveryPoints = pointDeliveryService.getAllDeliveryPoints();
+        model.addAttribute("deliveryPoints", deliveryPoints);
 
         model.addAttribute("cart", cart);
         return "cart/cart";
