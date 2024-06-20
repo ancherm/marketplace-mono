@@ -33,15 +33,6 @@
         <label for="file">Photo:</label>
         <input type="file" accept="image/*" id="file" name="file" required />
     </div>
-<!--    <div id="attributes-container">-->
-<!--        <label>Attributes:</label>-->
-<!--        <div th:each="attribute, iterStat : ${product.attributes}">-->
-<!--            <input type="text" th:field="*{attributes[__${iterStat.index}__].name}" placeholder="Attribute name" required />-->
-<!--            <input type="text" th:field="*{attributes[__${iterStat.index}__].value}" placeholder="Attribute value" required />-->
-<!--            <button type="button" th:if="${iterStat.size > 1}" onclick="removeAttribute(this)">Remove</button>-->
-<!--        </div>-->
-<!--        <button type="button" onclick="addAttribute()">Add Attribute</button>-->
-<!--    </div>-->
     <div>
         <button type="submit">Add Product</button>
     </div>

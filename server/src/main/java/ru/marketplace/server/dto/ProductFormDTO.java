@@ -3,8 +3,6 @@ package ru.marketplace.server.dto;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 import ru.marketplace.server.entities.products.Category;
-import ru.marketplace.server.entities.products.Product;
-import ru.marketplace.server.entities.products.ProductAttribute;
 import ru.marketplace.server.entities.seller.Seller;
 
 import java.math.BigDecimal;
@@ -20,6 +18,5 @@ public class ProductFormDTO {
     private Seller seller;
     private String description;
     private MultipartFile[] photos;
-    private List<ProductAttribute> attributes;
 
 }

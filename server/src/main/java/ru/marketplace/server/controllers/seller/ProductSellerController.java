@@ -27,11 +27,11 @@ public class ProductSellerController {
     }
 
     @PostMapping("/seller/product/add")
-    public String addProduct(@ModelAttribute Product product, @RequestParam("file") MultipartFile file, @RequestParam Map<String, String> attributes) {
+    public String addProduct(@ModelAttribute Product product, @RequestParam("file") MultipartFile file) {
         // Извлечение атрибутов из параметров запроса
 
 
-        productService.save(product, file, attributes);
+        productService.save(product, file);
         return "redirect:/seller/product/add";
     }
 }

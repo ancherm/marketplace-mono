@@ -23,6 +23,12 @@ public class CartService {
     private final CartItemRepository cartItemRepository;
     private final ProductRepository productRepository;
 
+    private final int timeMinutesLeft = 2;
+
+    public int getTimeMinutesLeft() {
+        return timeMinutesLeft;
+    }
+
     @Transactional
     public Cart getCartByUser(User user) {
         return cartRepository.findByUser(user).orElseGet(() -> createCartForUser(user));
@@ -91,7 +97,7 @@ public class CartService {
 
     @Transactional
     public void clearExpiredCarts() {
-        LocalDateTime expirationTime = LocalDateTime.now().minusMinutes(1);
+        LocalDateTime expirationTime = LocalDateTime.now().minusMinutes(timeMinutesLeft);
         List<Cart> expiredCarts = cartRepository.findAllByCreatedCartBefore(expirationTime);
 
         for (Cart cart : expiredCarts) {

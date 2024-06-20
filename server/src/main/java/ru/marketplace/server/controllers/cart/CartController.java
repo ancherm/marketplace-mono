@@ -44,7 +44,7 @@ public class CartController {
             model.addAttribute("timeLeft", 0);
         } else {
             LocalDateTime now = LocalDateTime.now();
-            Duration duration = Duration.between(now, cart.getCreatedCart().plusMinutes(5));
+            Duration duration = Duration.between(now, cart.getCreatedCart().plusMinutes(cartService.getTimeMinutesLeft()));
             long secondsLeft = duration.getSeconds();
             model.addAttribute("timeLeft", secondsLeft);
         }
@@ -70,7 +70,7 @@ public class CartController {
                 cartService.addToCart(user, product, quantity);
             }
         }
-        return "redirect:/catalog";
+        return "redirect:/catalog/" + productId;
     }
 
     @PostMapping("/cart/remove/{itemId}")

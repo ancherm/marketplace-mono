@@ -15,7 +15,7 @@ public class SchedulingConfig {
         this.cartService = cartService;
     }
 
-    @Scheduled(fixedRate = 60000) // выполняется каждую минуту
+    @Scheduled(fixedRate = 1000) // выполняется каждую секунду
     public void clearExpiredCarts() {
         cartService.clearExpiredCarts();
     }

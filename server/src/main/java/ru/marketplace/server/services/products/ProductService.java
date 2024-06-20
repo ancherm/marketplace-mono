@@ -3,10 +3,7 @@ package ru.marketplace.server.services.products;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import ru.marketplace.server.entities.products.PhotoProduct;
 import ru.marketplace.server.entities.products.Product;
-import ru.marketplace.server.entities.products.ProductAttribute;
-import ru.marketplace.server.repositories.products.ProductAttributeRepository;
 import ru.marketplace.server.repositories.products.ProductRepository;
 
 import java.io.IOException;
@@ -19,7 +16,6 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    private final ProductAttributeRepository productAttributeRepository;
 
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -41,7 +37,7 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
-    public void save(Product product, MultipartFile file, Map<String, String> attributes) {
+    public void save(Product product, MultipartFile file) {
         // Сохранение фото
         if (!file.isEmpty()) {
             try {
@@ -54,15 +50,6 @@ public class ProductService {
             }
         }
 
-        // Сохранение атрибутов
-
-        attributes.forEach((name, value) -> {
-            ProductAttribute attribute = new ProductAttribute();
-            attribute.setName(name);
-            attribute.setValue(value);
-            attribute.setProduct(product);
-            product.getAttributes().add(attribute);
-        });
 
         productRepository.save(product);
     }
