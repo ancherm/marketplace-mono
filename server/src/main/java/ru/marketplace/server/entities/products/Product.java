@@ -1,5 +1,6 @@
 package ru.marketplace.server.entities.products;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import jakarta.persistence.*;
 import lombok.*;
 import ru.marketplace.server.entities.seller.Seller;

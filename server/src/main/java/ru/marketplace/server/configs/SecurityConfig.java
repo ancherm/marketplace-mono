@@ -22,7 +22,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfig {
 
-    private final UserDetailsService userDetailsService;
     private final SellerAuthenticationSuccessHandler sellerAuthenticationSuccessHandler;
 
     @Bean
@@ -33,7 +32,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .requestMatchers("/seller/**").hasAnyRole("SELLER")
                         .requestMatchers("/catalog/**", "/cart/**").hasAnyRole("BUYER")
-                        .requestMatchers("/registration", "/login", "/login/seller").permitAll()
+                        .requestMatchers("/registration", "/login").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

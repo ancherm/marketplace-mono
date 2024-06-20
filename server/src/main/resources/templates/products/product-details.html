@@ -76,6 +76,10 @@
         .star-rating input:hover ~ label {
             color: #f0c000;
         }
+        .out-of-stock {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -107,12 +111,13 @@
             <ul>
                 <li th:each="attribute : ${product.attributes}" th:text="${attribute.name} + ': ' + ${attribute.value}">Характеристика 1</li>
             </ul>
-            <form th:action="@{/cart/add}" method="post">
-                <input type="hidden" name="productId" th:value="${product.id}" />
+            <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
                 <input type="hidden" name="quantity" value="1" />
                 <button type="submit" class="add-to-cart-btn">В КОРЗИНУ</button>
             </form>
             <p class="product-description" th:text="${product.description}">Описание товара...</p>
+            <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
+            <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
         </div>
     </div>
     <div class="review-form">

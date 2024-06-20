@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="Добавлены детали продукта">
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="Добавлен авторизация">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/seller/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/seller/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/entities/products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/cart/CartItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/cart/CartItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/cart/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/cart/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" afterDir="false" />
     </list>
@@ -22,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -153,7 +156,8 @@
       <workItem from="1718567690798" duration="5318000" />
       <workItem from="1718642732322" duration="14537000" />
       <workItem from="1718718645816" duration="18247000" />
-      <workItem from="1718793413877" duration="14320000" />
+      <workItem from="1718793413877" duration="15440000" />
+      <workItem from="1718891937933" duration="9573000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -197,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718753667169</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Добавлен авторизация">
+      <created>1718839894563</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718839894563</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +232,7 @@
     <MESSAGE value="WEB: add new product from seller" />
     <MESSAGE value="добавляется товар и отображается в каталоге" />
     <MESSAGE value="Добавлены детали продукта" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены детали продукта" />
+    <MESSAGE value="Добавлен авторизация" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен авторизация" />
   </component>
 </project>

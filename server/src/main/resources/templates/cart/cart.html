@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .cart-container {
+            padding: 20px;
+        }
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+    </style>
+    <script>
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    alert("Корзина была очищена");
+                    window.location.reload();
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            let timeLeft = [[${timeLeft}]];
+            if (timeLeft > 0) {
+                let display = document.querySelector('#time');
+                startTimer(timeLeft, display);
+            }
+        };
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRICING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BLOG</a>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="/cart">КОРЗИНА</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="#">R</a>
+        </div>
+    </div>
+</nav>
+<div class="container cart-container">
+    <h1>Ваша корзина</h1>
+    <div th:if="${cart.items.size() == 0}">
+        <p>Ваша корзина пуста.</p>
+    </div>
+    <div th:unless="${cart.items.size() == 0}">
+        <p>Время до очистки корзины: <span id="time"></span></p>
+        <div th:each="item : ${cart.items}" class="cart-item">
+            <div class="row">
+                <div class="col-md-8">
+                    <span th:text="${item.product.name}">Product Name</span>
+                </div>
+                <div class="col-md-2">
+                    <span th:text="${item.quantity} + ' шт'">Quantity</span>
+                </div>
+                <div class="col-md-2">
+                    <form th:action="@{/cart/remove/{id}(id=${item.id})}" method="post">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form th:action="@{/cart/checkout}" method="post">
+            <button type="submit" class="btn btn-primary">Оформить заказ</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

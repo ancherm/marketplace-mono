@@ -31,6 +31,7 @@
             text-align: center;
             overflow: hidden;
             transition: transform 0.2s;
+            cursor: pointer;
         }
         .product-card:hover {
             transform: scale(1.05);
@@ -57,6 +58,10 @@
             border-radius: 5px;
             margin-top: 10px;
             cursor: pointer;
+        }
+        .out-of-stock {
+            color: red;
+            font-weight: bold;
         }
     </style>
     <script>
@@ -104,8 +109,10 @@
                 <img th:src="@{'/images/' + ${product.id}}" alt="Product Image" class="product-image" />
                 <div class="product-name" th:text="${product.name}">Product Name</div>
                 <div class="product-price" th:text="${product.price} + ' ₽'">TEXT_PRICE ₽</div>
+                <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
+                <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
             </div>
-            <button class="add-to-cart-btn">В КОРЗИНУ</button>
+<!--            <button th:if="${product.quantity > 0}" class="add-to-cart-btn">В КОРЗИНУ</button>-->
         </div>
     </div>
 </div>
