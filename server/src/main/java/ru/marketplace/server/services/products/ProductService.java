@@ -29,6 +29,18 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    public void saveForSearch(Product product) {
+        productRepository.save(product);
+    }
+
+    public List<Product> findByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
+
+    public List<Product> searchByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
+
     public void save(Product product, MultipartFile file, Map<String, String> attributes) {
         // Сохранение фото
         if (!file.isEmpty()) {

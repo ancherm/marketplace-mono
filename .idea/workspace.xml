@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="Работает суммирование в корзине">
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/cart/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/cart/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/cart/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/cart/cart.html" afterDir="false" />
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="Добавлен выбор пвз в корзине">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/products/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/products/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/products/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +152,7 @@
       <workItem from="1718642732322" duration="14537000" />
       <workItem from="1718718645816" duration="18247000" />
       <workItem from="1718793413877" duration="15440000" />
-      <workItem from="1718891937933" duration="13055000" />
+      <workItem from="1718891937933" duration="14287000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -221,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718905718274</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Добавлен выбор пвз в корзине">
+      <created>1718906295985</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718906295985</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +259,7 @@
     <MESSAGE value="Добавлена корзина с таймером" />
     <MESSAGE value="Добавлено количество для покупки" />
     <MESSAGE value="Работает суммирование в корзине" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работает суммирование в корзине" />
+    <MESSAGE value="Добавлен выбор пвз в корзине" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен выбор пвз в корзине" />
   </component>
 </project>

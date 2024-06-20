@@ -99,8 +99,16 @@
             <h1>Itemplace Market</h1>
         </div>
         <div class="col-12 text-center mb-4">
-            <input type="text" placeholder="Найдётся всё" />
-            <button>🔍</button>
+            <form th:action="@{/catalog}" method="get">
+                <select name="categoryId" class="form-control d-inline-block w-auto">
+                    <option value="" >Все категории</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select>
+                <input type="text" name="search" placeholder="Найдётся всё" class="form-control d-inline-block w-auto" />
+                <button type="submit" class="btn btn-primary">🔍</button>
+            </form>
         </div>
     </div>
     <div class="grid-container">
@@ -112,7 +120,6 @@
                 <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
                 <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
             </div>
-<!--            <button th:if="${product.quantity > 0}" class="add-to-cart-btn">В КОРЗИНУ</button>-->
         </div>
     </div>
 </div>
