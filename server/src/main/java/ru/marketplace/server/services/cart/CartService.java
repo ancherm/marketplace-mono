@@ -11,6 +11,7 @@ import ru.marketplace.server.repositories.cart.CartItemRepository;
 import ru.marketplace.server.repositories.cart.CartRepository;
 import ru.marketplace.server.repositories.products.ProductRepository;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -104,5 +105,11 @@ public class CartService {
             cart.setTimerStarted(false);
             cartRepository.save(cart);
         }
+    }
+
+    public BigDecimal calculateTotalPrice(Cart cart) {
+        return cart.getItems().stream()
+                .map(item -> item.getProduct().getPrice().multiply(new BigDecimal(item.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

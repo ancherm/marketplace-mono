@@ -16,6 +16,7 @@ import ru.marketplace.server.repositories.users.UserRepository;
 import ru.marketplace.server.services.cart.CartService;
 import ru.marketplace.server.services.products.ProductService;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -43,6 +44,9 @@ public class CartController {
             long secondsLeft = duration.getSeconds();
             model.addAttribute("timeLeft", secondsLeft);
         }
+
+        BigDecimal totalPrice = cartService.calculateTotalPrice(cart);
+        model.addAttribute("totalPrice", totalPrice);
 
         model.addAttribute("cart", cart);
         return "cart/cart";

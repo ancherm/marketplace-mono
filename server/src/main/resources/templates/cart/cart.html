@@ -87,6 +87,9 @@
                 </div>
             </div>
         </div>
+        <div class="total-price">
+            <h3>Общая сумма: <span th:text="${totalPrice} + ' ₽'">0 ₽</span></h3>
+        </div>
         <form th:action="@{/cart/checkout}" method="post">
             <button type="submit" class="btn btn-primary">Оформить заказ</button>
         </form>
