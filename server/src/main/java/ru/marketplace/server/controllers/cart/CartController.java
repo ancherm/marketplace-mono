@@ -55,7 +55,9 @@ public class CartController {
         Optional<Product> productOptional = productService.getProductById(productId);
         if (productOptional.isPresent()) {
             Product product = productOptional.get();
-            cartService.addToCart(user, product, quantity);
+            if (quantity > 0 && quantity <= product.getQuantity()) {
+                cartService.addToCart(user, product, quantity);
+            }
         }
         return "redirect:/catalog";
     }

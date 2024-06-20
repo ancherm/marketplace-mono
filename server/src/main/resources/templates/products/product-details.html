@@ -112,7 +112,10 @@
                 <li th:each="attribute : ${product.attributes}" th:text="${attribute.name} + ': ' + ${attribute.value}">Характеристика 1</li>
             </ul>
             <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
-                <input type="hidden" name="quantity" value="1" />
+                <div class="form-group">
+                    <label for="quantity">Количество</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" th:attr="max=${product.quantity}" value="1" required>
+                </div>
                 <button type="submit" class="add-to-cart-btn">В КОРЗИНУ</button>
             </form>
             <p class="product-description" th:text="${product.description}">Описание товара...</p>
