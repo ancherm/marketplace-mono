@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .profile-container {
+            padding: 20px;
+        }
+        .purchase-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .purchase-item:hover {
+            background-color: #f9f9f9;
+        }
+        .purchase-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function redirectToProduct(productId) {
+            window.location.href = '/catalog/' + productId;
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRICING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BLOG</a>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="/cart">КОРЗИНА</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="#">R</a>
+        </div>
+    </div>
+</nav>
+<div class="container profile-container">
+    <h1>Профиль пользователя</h1>
+    <h2 th:text="${user.username}">Имя пользователя</h2>
+    <div>
+        <h3>Купленные товары</h3>
+        <div th:if="${purchases.size() == 0}">
+            <p>Вы ещё не совершали покупок.</p>
+        </div>
+        <div th:each="purchase : ${purchases}" class="purchase-item" th:onclick="'redirectToProduct(' + ${purchase.product.id} + ')'">
+            <div class="row">
+                <div class="col-md-2">
+                    <img th:src="@{'/images/' + ${purchase.product.id}}" alt="Product Image" class="purchase-image" />
+                </div>
+                <div class="col-md-6">
+                    <h3 th:text="${purchase.product.name}">Название товара</h3>
+                    <p th:text="'Количество: ' + ${purchase.quantity}">Количество: 1</p>
+                </div>
+                <div class="col-md-4">
+                    <p th:text="'Дата: ' + ${purchase.purchaseDateFormatted}"></p>
+                </div>
+                <div class="col-md-4">
+                    <p th:text="'Цена: ' + ${purchase.totalPrice} + ' ₽'">Цена: 1000 ₽</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

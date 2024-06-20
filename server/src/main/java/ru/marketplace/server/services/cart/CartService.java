@@ -5,10 +5,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.marketplace.server.entities.cart.Cart;
 import ru.marketplace.server.entities.cart.CartItem;
+import ru.marketplace.server.entities.cart.Purchase;
+import ru.marketplace.server.entities.delivery.DeliveryPoint;
 import ru.marketplace.server.entities.products.Product;
 import ru.marketplace.server.entities.users.User;
 import ru.marketplace.server.repositories.cart.CartItemRepository;
 import ru.marketplace.server.repositories.cart.CartRepository;
+import ru.marketplace.server.repositories.cart.PurchaseRepository;
 import ru.marketplace.server.repositories.products.ProductRepository;
 
 import java.math.BigDecimal;
@@ -22,6 +25,7 @@ public class CartService {
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
     private final ProductRepository productRepository;
+    private final PurchaseRepository purchaseRepository;
 
     private final int timeMinutesLeft = 2;
 
@@ -81,8 +85,21 @@ public class CartService {
     }
 
     @Transactional
-    public void checkoutCart(User user) {
+    public void checkoutCart(User user, DeliveryPoint deliveryPoint) {
         Cart cart = getCartByUser(user);
+
+        List<CartItem> items = cart.getItems();
+        for (CartItem item : items) {
+            Purchase purchase = new Purchase();
+            purchase.setUser(user);
+            purchase.setProduct(item.getProduct());
+            purchase.setQuantity(item.getQuantity());
+            purchase.setTotalPrice(item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())));
+            purchase.setPurchaseDate(LocalDateTime.now());
+            purchase.setDeliveryPoint(deliveryPoint);
+            purchaseRepository.save(purchase);
+        }
+
         cart.getItems().clear();
         cart.setTimerStarted(false);
         cartRepository.save(cart);

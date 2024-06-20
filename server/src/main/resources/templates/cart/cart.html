@@ -93,7 +93,7 @@
         <form th:action="@{/cart/checkout}" method="post">
             <div class="form-group">
                 <label for="deliveryPoint">Выберите пункт самовывоза</label>
-                <select id="deliveryPoint" name="deliveryPoint" class="form-control" required>
+                <select id="deliveryPoint" name="deliveryPointId" class="form-control" required>
                     <option th:each="point : ${deliveryPoints}" th:value="${point.id}" th:text="${point.title} + ' - ' + ${point.address}"></option>
                 </select>
             </div>

@@ -118,10 +118,9 @@
                 </div>
                 <button type="submit" class="add-to-cart-btn">В КОРЗИНУ</button>
             </form>
-
         </div>
     </div>
-    <div class="review-form">
+    <div th:if="${canReview}" class="review-form">
         <h3>Оставить отзыв</h3>
         <form th:action="@{/catalog/{id}/review(id=${product.id})}" method="post">
             <div class="form-group">

@@ -1,9 +1,8 @@
 package ru.marketplace.server.entities.products;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import jakarta.persistence.*;
 import lombok.*;
-import ru.marketplace.server.entities.seller.Seller;
+import ru.marketplace.server.entities.users.User;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -41,7 +40,12 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
-    private Seller seller;
+    private User seller;
+
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<User> buyers = new ArrayList<>();
+    //TODO
+    // Сделать отношение покупатель - продавец - продукт
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductReview> reviews = new ArrayList<>();

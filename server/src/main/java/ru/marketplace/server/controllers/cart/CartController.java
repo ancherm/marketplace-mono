@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.marketplace.server.entities.cart.Cart;
-import ru.marketplace.server.entities.delivery.PointDelivery;
+import ru.marketplace.server.entities.delivery.DeliveryPoint;
 import ru.marketplace.server.entities.products.Product;
 import ru.marketplace.server.entities.users.User;
 import ru.marketplace.server.repositories.users.UserRepository;
 import ru.marketplace.server.services.cart.CartService;
-import ru.marketplace.server.services.delivery.PointDeliveryService;
+import ru.marketplace.server.services.delivery.DeliveryPointService;
 import ru.marketplace.server.services.products.ProductService;
 
 import java.math.BigDecimal;
@@ -32,7 +32,7 @@ public class CartController {
     private final CartService cartService;
     private final ProductService productService;
     private final UserRepository userRepository;
-    private final PointDeliveryService pointDeliveryService;
+    private final DeliveryPointService deliveryPointService;
 
     @GetMapping("/cart")
     public String viewCart(Model model, Principal principal, Authentication authentication) {
@@ -52,7 +52,7 @@ public class CartController {
         BigDecimal totalPrice = cartService.calculateTotalPrice(cart);
         model.addAttribute("totalPrice", totalPrice);
 
-        List<PointDelivery> deliveryPoints = pointDeliveryService.getAllDeliveryPoints();
+        List<DeliveryPoint> deliveryPoints = deliveryPointService.getAllDeliveryPoints();
         model.addAttribute("deliveryPoints", deliveryPoints);
 
         model.addAttribute("cart", cart);
@@ -83,11 +83,13 @@ public class CartController {
     }
 
     @PostMapping("/cart/checkout")
-    public String checkoutCart(Principal principal, Authentication authentication) {
+    public String checkoutCart(@RequestParam Long deliveryPointId, Principal principal, Authentication authentication) {
         String username = authentication.getName();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        DeliveryPoint deliveryPoint = deliveryPointService.findById(deliveryPointId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid delivery point ID"));
 
-        cartService.checkoutCart(user);
+        cartService.checkoutCart(user, deliveryPoint);
         return "redirect:/catalog";
     }
 }

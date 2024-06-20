@@ -37,48 +37,5 @@
         <button type="submit">Add Product</button>
     </div>
 </form>
-
-<script>
-    function addAttribute() {
-        let container = document.getElementById('attributes-container');
-        let totalAttributes = container.querySelectorAll('div').length;
-        if (totalAttributes < 5) {
-            let newAttributeDiv = document.createElement('div');
-            let inputName = document.createElement('input');
-            inputName.setAttribute('type', 'text');
-            inputName.setAttribute('name', `attributes[${totalAttributes}].name`);
-            inputName.setAttribute('placeholder', 'Attribute name');
-            inputName.setAttribute('required', 'required');
-            newAttributeDiv.appendChild(inputName);
-
-            let inputValue = document.createElement('input');
-            inputValue.setAttribute('type', 'text');
-            inputValue.setAttribute('name', `attributes[${totalAttributes}].value`);
-            inputValue.setAttribute('placeholder', 'Attribute value');
-            inputValue.setAttribute('required', 'required');
-            newAttributeDiv.appendChild(inputValue);
-
-            let removeButton = document.createElement('button');
-            removeButton.setAttribute('type', 'button');
-            removeButton.setAttribute('onclick', 'removeAttribute(this)');
-            removeButton.textContent = 'Remove';
-            newAttributeDiv.appendChild(removeButton);
-
-            container.insertBefore(newAttributeDiv, container.lastElementChild);
-        } else {
-            alert('Maximum 5 attributes allowed.');
-        }
-    }
-
-    function removeAttribute(button) {
-        let container = document.getElementById('attributes-container');
-        let totalAttributes = container.querySelectorAll('div').length;
-        if (totalAttributes > 1) {
-            button.parentElement.remove();
-        } else {
-            alert('Minimum 1 attribute required.');
-        }
-    }
-</script>
 </body>
 </html>
