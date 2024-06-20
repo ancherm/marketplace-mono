@@ -7,12 +7,13 @@ import ru.marketplace.server.entities.users.User;
 import java.math.BigDecimal;
 import java.util.*;
 
-@Entity @Table(name = "products")
+@Entity
+@Table(name = "products")
 @Builder
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @ToString
 public class Product {
     @Id
@@ -42,13 +43,6 @@ public class Product {
     @JoinColumn(name = "seller_id")
     private User seller;
 
-//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<User> buyers = new ArrayList<>();
-    //TODO
-    // Сделать отношение покупатель - продавец - продукт
-
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductReview> reviews = new ArrayList<>();
-
-
 }

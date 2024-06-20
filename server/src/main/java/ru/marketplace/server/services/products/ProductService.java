@@ -8,7 +8,6 @@ import ru.marketplace.server.repositories.products.ProductRepository;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -37,20 +36,15 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
-    public void save(Product product, MultipartFile file) {
+    public void save(Product product/*, MultipartFile file*/) {
         // Сохранение фото
-        if (!file.isEmpty()) {
-            try {
-//                PhotoProduct photoProduct = new PhotoProduct();
-//                photoProduct.setPhoto(file.getBytes());
-//                photoProduct.setProduct(product);
-                product.setPhoto(file.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
+//        if (!file.isEmpty()) {
+//            try {
+//                product.setPhoto(file.getBytes());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
         productRepository.save(product);
     }
 
@@ -65,5 +59,4 @@ public class ProductService {
     public void deleteAllProducts() {
         productRepository.deleteAll();
     }
-
 }

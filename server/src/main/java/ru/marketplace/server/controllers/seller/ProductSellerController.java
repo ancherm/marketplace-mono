@@ -13,10 +13,9 @@ import ru.marketplace.server.services.products.CategoryService;
 import ru.marketplace.server.services.products.ProductService;
 import ru.marketplace.server.services.users.UserService;
 
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.io.IOException;
 
-@Controller("/seller/product")
+@Controller
 @AllArgsConstructor
 public class ProductSellerController {
 
@@ -38,7 +37,45 @@ public class ProductSellerController {
 
         product.setSeller(seller);
 
-        productService.save(product, file);
+        try {
+            if (!file.isEmpty()) {
+                product.setPhoto(file.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        productService.save(product);
+        return "redirect:/seller/profile";
+    }
+
+    @GetMapping("/seller/product/edit/{id}")
+    public String editProduct(@PathVariable Long id, Model model) {
+        Product product = productService.getProductById(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+        model.addAttribute("product", product);
+        model.addAttribute("categories", categoryService.findAll());
+        return "seller/edit-product";
+    }
+
+    @PostMapping("/seller/product/edit/{id}")
+    public String updateProduct(@PathVariable Long id, @ModelAttribute Product product, @RequestParam("file") MultipartFile file) {
+        Product existingProduct = productService.getProductById(id).orElseThrow(() -> new IllegalArgumentException("Invalid product Id:" + id));
+
+        existingProduct.setName(product.getName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setCategory(product.getCategory());
+
+        try {
+            if (!file.isEmpty()) {
+                existingProduct.setPhoto(file.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        productService.save(existingProduct);
         return "redirect:/seller/profile";
     }
 }

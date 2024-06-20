@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Itemplace Market</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #7FB7BE;
+        }
+        .navbar {
+            background-color: #0082e6;
+        }
+        .navbar-brand {
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            background-color: #7FB7BE;
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product-name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .add-to-cart-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .out-of-stock {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function redirectToProduct(productId) {
+            window.location.href = '/admin/catalog/' + productId;
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">PRICING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">BLOG</a>
+            </li>
+        </ul>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="/cart">КОРЗИНА</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="#">R</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center my-4">
+            <h1>Itemplace Market</h1>
+        </div>
+        <div class="col-12 text-center mb-4">
+            <form th:action="@{/admin/catalog}" method="get">
+                <select name="categoryId" class="form-control d-inline-block w-auto">
+                    <option value="" >Все категории</option>
+                    <option th:each="category : ${categories}"
+                            th:value="${category.id}"
+                            th:text="${category.name}"></option>
+                </select>
+                <input type="text" name="search" placeholder="Найдётся всё" class="form-control d-inline-block w-auto" />
+                <button type="submit" class="btn btn-primary">🔍</button>
+            </form>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div th:each="product : ${products}">
+            <div class="product-card" th:onclick="'redirectToProduct(' + ${product.id} + ')'">
+                <img th:src="@{'/images/' + ${product.id}}" alt="Product Image" class="product-image" />
+                <div class="product-name" th:text="${product.name}">Product Name</div>
+                <div class="product-price" th:text="${product.price} + ' ₽'">TEXT_PRICE ₽</div>
+                <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
+                <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

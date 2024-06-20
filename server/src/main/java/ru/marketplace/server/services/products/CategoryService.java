@@ -21,4 +21,8 @@ public class CategoryService {
         return Optional.of(categoryRepository.findByName(name)).orElseThrow();
     }
 
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
+
 }
