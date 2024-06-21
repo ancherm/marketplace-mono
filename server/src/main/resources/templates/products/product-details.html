@@ -9,13 +9,21 @@
             background-color: #FFFFFF;
         }
         .navbar {
-            background-color: #0082e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*background-color: #0082e6;*/
+            padding: 0 20px;
+            margin: 20px;
         }
         .navbar-brand {
-            color: white;
+            color: black;
+            font-size: 24px;
+            text-decoration: none;
         }
         .navbar-nav .nav-link {
-            color: white;
+            color: black;
+            margin-left: 10px;
         }
         .product-details-container {
             display: flex;
@@ -72,22 +80,11 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">LOGO</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">PRODUCTS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">PRICING</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">BLOG</a>
-            </li>
-        </ul>
-        <div class="navbar-nav ml-auto">
-            <a class="nav-link" th:href="@{/cart}">CART</a>
-        </div>
+    <a class="navbar-brand" href="/catalog">Itemplace Market</a>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="/user/profile">Профиль покупателя</a>
+        <a class="nav-link" href="/cart">Корзина</a>
+        <a class="nav-link" href="/logout">Выйти</a>
     </div>
 </nav>
 <div class="container">

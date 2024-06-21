@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .links {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: auto;
+        }
+        .links a {
+            text-decoration: none;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .title {
+            font-size: 3em;
+            margin-bottom: 120px;
+        }
+    </style>
 </head>
 <body>
-<h1>Register</h1>
+<div class="title">Itemplace Market</div>
+<h1>Регистрация</h1>
 <form th:action="@{/registration}" th:object="${user}" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" th:field="*{username}" />
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="text" th:field="*{email}" />
-    </div>
-
-    <div>
-        <label>Password:</label>
-        <input type="password" th:field="*{password}" />
-    </div>
-    <div>
-        <label>Role:</label>
-        <select th:field="*{role}">
-            <option th:value="ROLE_BUYER">Buyer</option>
-            <option th:value="ROLE_SELLER">Seller</option>
-            <option th:value="ROLE_ADMIN">Admin</option>
-        </select>
-    </div>
-    <div>
-        <button type="submit">Register</button>
+    <input type="text" th:field="*{username}" placeholder="Имя пользователя" />
+    <input type="text" th:field="*{email}" placeholder="Электронная почта" />
+    <input type="password" th:field="*{password}" placeholder="Пароль" />
+    <select th:field="*{role}">
+        <option th:value="ROLE_BUYER">Покупатель</option>
+        <option th:value="ROLE_SELLER">Продавец</option>
+<!--        <option th:value="ROLE_ADMIN">Администратор</option>-->
+    </select>
+    <button type="submit">Зарегистрироваться</button>
+    <div class="links">
+        <a th:href="@{/login}">Уже есть аккаунт? Войти</a>
     </div>
 </form>
 </body>

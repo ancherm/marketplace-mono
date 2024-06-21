@@ -12,6 +12,13 @@
             height: 100vh;
             font-family: Arial, sans-serif;
         }
+        h1 {
+            font-size: 1.5em;
+        }
+        .title {
+            font-size: 3em;
+            margin-bottom: 120px;
+        }
         form {
             display: flex;
             flex-direction: column;
@@ -38,11 +45,15 @@
         .links {
             margin-top: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            width: 200px;
+            align-items: center;
+            width: auto;
         }
         .links a {
+            align-items: center;
             text-decoration: none;
+            margin-bottom: 20px;
             color: #007bff;
         }
         .links a:hover {
@@ -51,6 +62,7 @@
     </style>
 </head>
 <body>
+<div class="title">Itemplace Market</div>
 <h1>Вход в аккаунт</h1>
 <form th:action="@{/login}" method="post">
     <input type="text" name="username" placeholder="login" />
@@ -58,7 +70,6 @@
     <button type="submit">Продолжить</button>
     <div class="links">
         <a th:href="@{/registration}">Нет аккаунта? Зарегистрироваться</a>
-        <a th:href="@{/login/seller}">Войти как продавец</a>
     </div>
 </form>
 </body>

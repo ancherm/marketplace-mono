@@ -6,16 +6,24 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #7FB7BE;
+            /*background-color: #7FB7BE;*/
         }
         .navbar {
-            background-color: #0082e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*background-color: #0082e6;*/
+            padding: 0 20px;
+            margin: 20px;
         }
         .navbar-brand {
-            color: white;
+            color: black;
+            font-size: 24px;
+            text-decoration: none;
         }
         .navbar-nav .nav-link {
-            color: white;
+            color: black;
+            margin-left: 10px;
         }
         .grid-container {
             display: grid;
@@ -63,6 +71,7 @@
             color: red;
             font-weight: bold;
         }
+
     </style>
     <script>
         function redirectToProduct(productId) {
@@ -72,32 +81,14 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">LOGO</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">PRODUCTS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">PRICING</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">BLOG</a>
-            </li>
-        </ul>
-        <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="/cart">КОРЗИНА</a>
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="#">R</a>
-        </div>
+    <a class="navbar-brand">Itemplace Market</a>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="/admin/categories">Настроить категории</a>
+        <a class="nav-link" href="/logout">Выйти</a>
     </div>
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-12 text-center my-4">
-            <h1>Itemplace Market</h1>
-        </div>
         <div class="col-12 text-center mb-4">
             <form th:action="@{/admin/catalog}" method="get">
                 <select name="categoryId" class="form-control d-inline-block w-auto">
@@ -114,9 +105,9 @@
     <div class="grid-container">
         <div th:each="product : ${products}">
             <div class="product-card" th:onclick="'redirectToProduct(' + ${product.id} + ')'">
-                <img th:src="@{'/images/' + ${product.id}}" alt="Product Image" class="product-image" />
-                <div class="product-name" th:text="${product.name}">Product Name</div>
-                <div class="product-price" th:text="${product.price} + ' ₽'">TEXT_PRICE ₽</div>
+                <img th:src="@{'/images/' + ${product.id}}" alt="Фото продукта" class="product-image" />
+                <div class="product-name" th:text="${product.name}">Название</div>
+                <div class="product-price" th:text="${product.price} + ' ₽'">Цена ₽</div>
                 <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
                 <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
             </div>

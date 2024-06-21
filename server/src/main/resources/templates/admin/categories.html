@@ -3,39 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <title>Categories Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /*background-color: #0082e6;*/
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: black;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        .container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        hr {
+            width: 100%;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .delete-btn {
+            padding: 5px 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Itemplace Market</a>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="/admin/categories">Настроить категории</a>
+        <a class="nav-link" href="/logout">Выйти</a>
+    </div>
+</nav>
 <div class="container">
-    <h2>Manage Categories</h2>
-    <form th:action="@{/admin/categories}" th:object="${newCategoryDTO}" method="post">
+    <h2>Управление категориями</h2>
+    <form th:action="@{/admin/categories}" th:object="${newCategory}" method="post">
         <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" th:field="*{name}" class="form-control" required />
+            <label for="name">Название:</label>
+            <input type="text" id="name" th:field="*{name}" required />
         </div>
         <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea id="description" th:field="*{description}" class="form-control"></textarea>
+            <label for="description">Описание:</label>
+            <textarea id="description" th:field="*{description}"></textarea>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Add Category</button>
+            <button type="submit">Добавить</button>
         </div>
     </form>
     <hr/>
-    <h3>Existing Categories</h3>
-    <table class="table table-striped">
+    <h3>Существующие категории</h3>
+    <table>
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
+            <th>Назавние</th>
+            <th>Описание</th>
+            <th>Действия</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="category : ${categories}">
             <td th:text="${category.id}">1</td>
-            <td th:text="${category.name}">Category Name</td>
-            <td th:text="${category.description}">Category Description</td>
+            <td th:text="${category.name}">Название</td>
+            <td th:text="${category.description}">Описание</td>
+            <td>
+                <form th:action="@{/admin/categories/delete/{id}(id=${category.id})}" method="post">
+                    <button type="submit" class="delete-btn">Удалить</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
