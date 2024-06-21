@@ -36,27 +36,13 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoreCase(name);
     }
 
-    public void save(Product product/*, MultipartFile file*/) {
-        // Сохранение фото
-//        if (!file.isEmpty()) {
-//            try {
-//                product.setPhoto(file.getBytes());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+    public void save(Product product) {
+
         productRepository.save(product);
     }
 
-    public void deleteProduct(Long id) {
+    public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
 
-    public void deleteProduct(Product product) {
-        productRepository.delete(product);
-    }
-
-    public void deleteAllProducts() {
-        productRepository.deleteAll();
-    }
 }

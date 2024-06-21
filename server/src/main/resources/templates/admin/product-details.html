@@ -38,7 +38,7 @@
         .product-description {
             margin-top: 20px;
         }
-        .add-to-cart-btn {
+        .add-to-cart-btn, .delete-product-btn {
             background-color: #007bff;
             color: white;
             border: none;
@@ -46,6 +46,10 @@
             border-radius: 5px;
             margin-top: 20px;
             cursor: pointer;
+        }
+        .delete-product-btn {
+            background-color: #dc3545;
+            margin-left: 10px;
         }
         .review-form {
             margin-top: 20px;
@@ -114,22 +118,21 @@
             <div th:if="${product.quantity == 0}" class="out-of-stock">Нет в наличии</div>
             <div th:if="${product.quantity > 0}" class="product-quantity" th:text="'Количество: ' + ${product.quantity} + ' шт'">Количество штук</div>
 
+            <form th:action="@{/admin/catalog/delete/{id}(id=${product.id})}" method="post" style="display: inline;">
+                <button type="submit" class="delete-product-btn">Удалить товар</button>
+            </form>
         </div>
     </div>
 
     <div class="review-list">
         <h3>Отзывы</h3>
         <div th:each="review : ${product.reviews}" class="review-item">
+            <h5 th:text="${review.reviewerName}">Reviewer Name</h5>
             <div>
-                <h5 th:text="${review.reviewerName}">Reviewer Name</h5>
-                <div>
-                    <span th:each="i : ${#numbers.sequence(1, review.rating)}" class="star" style="color: #f0c000;">★</span>
-<!--                    <span th:each="i : ${#numbers.sequence(review.rating + 1, 5)}" class="star" style="color: #ccc;">★</span>-->
-                </div>
-                <p th:text="${review.reviewText}">Review Content</p>
+                <span th:each="i : ${#numbers.sequence(1, 5)}" class="star" th:classappend="${i <= review.rating} ? ' checked' : ''">★</span>
             </div>
+            <p th:text="${review.reviewText}">Review Content</p>
             <form th:action="@{/admin/reviews/delete/{id}(id=${review.id})}" method="post">
-                <input type="hidden" name="productId" th:value="${product.id}">
                 <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
             </form>
         </div>

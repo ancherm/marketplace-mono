@@ -88,8 +88,7 @@ public class CartService {
     public void checkoutCart(User user, DeliveryPoint deliveryPoint) {
         Cart cart = getCartByUser(user);
 
-        List<CartItem> items = cart.getItems();
-        for (CartItem item : items) {
+        cart.getItems().forEach(item -> {
             Purchase purchase = new Purchase();
             purchase.setUser(user);
             purchase.setProduct(item.getProduct());
@@ -98,17 +97,20 @@ public class CartService {
             purchase.setPurchaseDate(LocalDateTime.now());
             purchase.setDeliveryPoint(deliveryPoint);
             purchaseRepository.save(purchase);
-        }
+        });
 
         cart.getItems().clear();
         cart.setTimerStarted(false);
         cartRepository.save(cart);
     }
 
+
     private Cart createCartForUser(User user) {
-        Cart cart = new Cart();
-        cart.setUser(user);
-        cart.setCreatedCart(LocalDateTime.now());
+        Cart cart = Cart.builder()
+                .user(user)
+                .createdCart(LocalDateTime.now())
+                .build();
+
         return cartRepository.save(cart);
     }
 
@@ -117,18 +119,18 @@ public class CartService {
         LocalDateTime expirationTime = LocalDateTime.now().minusMinutes(timeMinutesLeft);
         List<Cart> expiredCarts = cartRepository.findAllByCreatedCartBefore(expirationTime);
 
-        for (Cart cart : expiredCarts) {
-            List<CartItem> cartItems = cart.getItems();
-            for (CartItem cartItem: cartItems) {
+        expiredCarts.forEach(cart -> {
+            cart.getItems().forEach(cartItem -> {
                 Product product = cartItem.getProduct();
                 product.setQuantity(product.getQuantity() + cartItem.getQuantity());
                 productRepository.save(product);
-            }
+            });
             cart.getItems().clear();
             cart.setTimerStarted(false);
             cartRepository.save(cart);
-        }
+        });
     }
+
 
     public BigDecimal calculateTotalPrice(Cart cart) {
         return cart.getItems().stream()

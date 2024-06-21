@@ -39,6 +39,7 @@ public class AdminController {
     public String getProducts(@RequestParam(required = false) Long categoryId,
                               @RequestParam(required = false) String search,
                               Model model) {
+
         List<Product> products;
         if (categoryId != null) {
             products = productService.findByCategory(categoryId);
@@ -66,6 +67,12 @@ public class AdminController {
             return "redirect:/admin/catalog";
         }
 
+    }
+
+    @PostMapping("/admin/catalog/delete/{id}")
+    public String deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return "redirect:/admin/catalog";
     }
 
     @PostMapping("/admin/reviews/delete/{id}")

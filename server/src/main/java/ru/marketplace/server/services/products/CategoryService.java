@@ -18,7 +18,11 @@ public class CategoryService {
     }
 
     public Optional<Category> findByName(String name) {
-        return Optional.of(categoryRepository.findByName(name)).orElseThrow();
+        return categoryRepository.findByName(name);
+    }
+
+    public Optional<Category> findById(Long id) {
+        return categoryRepository.findById(id);
     }
 
     public void save(Category category) {

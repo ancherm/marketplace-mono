@@ -10,6 +10,7 @@ import ru.marketplace.server.repositories.cart.PurchaseRepository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -28,11 +29,12 @@ public class PurchaseService {
     }
 
     public Map<Long, Integer> getSalesDataBySeller(User seller) {
-        List<Purchase> purchases = purchaseRepository.findAllByProduct_Seller(seller);
-        Map<Long, Integer> salesData = new HashMap<>();
-        for (Purchase purchase : purchases) {
-            salesData.merge(purchase.getProduct().getId(), purchase.getQuantity(), Integer::sum);
-        }
-        return salesData;
+        return purchaseRepository.findAllByProduct_Seller(seller).stream()
+                .collect(Collectors.toMap(
+                        purchase -> purchase.getProduct().getId(),
+                        Purchase::getQuantity,
+                        Integer::sum
+                ));
     }
+
 }

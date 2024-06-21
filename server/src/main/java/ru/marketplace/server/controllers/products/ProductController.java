@@ -15,6 +15,7 @@ import ru.marketplace.server.services.products.CategoryService;
 import ru.marketplace.server.services.products.ProductService;
 import ru.marketplace.server.services.products.ReviewService;
 import ru.marketplace.server.services.users.UserService;
+import ru.marketplace.server.utils.UserUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ProductController {
     private final ReviewService reviewService;
     private final CategoryService categoryService;
     private final PurchaseService purchaseService;
-    private final UserService userService;
+    private final UserUtil userUtil;
 
     @GetMapping("/catalog")
     public String getProducts(@RequestParam(required = false) Long categoryId,
@@ -56,8 +57,8 @@ public class ProductController {
             Product product = productOptional.get();
             model.addAttribute("product", product);
 
-            String username = authentication.getName();
-            User user = userService.findByUsername(username).orElse(null);
+            User user = userUtil.isExistUser(authentication.getName());
+
             boolean canReview = purchaseService.userHasPurchasedProduct(user, product);
             model.addAttribute("canReview", canReview);
 
@@ -71,8 +72,7 @@ public class ProductController {
     @PostMapping("/catalog/{id}/review")
     public String addReview(@PathVariable Long id, @RequestParam String reviewerName, @RequestParam String content, @RequestParam int rating, Authentication authentication) {
         Optional<Product> productOptional = productService.getProductById(id);
-        String username = authentication.getName();
-        User user = userService.findByUsername(username).orElse(null);
+        User user = userUtil.isExistUser(authentication.getName());
 
         if (productOptional.isPresent() && user != null && purchaseService.userHasPurchasedProduct(user, productOptional.get())) {
             Product product = productOptional.get();

@@ -1,6 +1,7 @@
 package ru.marketplace.server.controllers.users;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,14 +40,15 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model) {
-        User user = userRepository.findByUsername(username).orElse(null);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username is not found"));
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            // Добавьте необходимую логику для успешного логина
             return "redirect:/catalog";
-        } else {
-            model.addAttribute("error", "Invalid username or password");
-            return "users/login";
         }
+
+        model.addAttribute("error", "Error of username or password");
+        return "users/login";
+
     }
 
 }

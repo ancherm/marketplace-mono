@@ -11,6 +11,7 @@ import ru.marketplace.server.repositories.users.UserRepository;
 import lombok.AllArgsConstructor;
 import ru.marketplace.server.services.cart.PurchaseService;
 import ru.marketplace.server.services.users.UserService;
+import ru.marketplace.server.utils.UserUtil;
 
 import java.util.Map;
 
@@ -19,12 +20,12 @@ import java.util.Map;
 public class SellerAuthController {
 
     private final UserService userService;
+    private final UserUtil userUtil;
     private final PurchaseService purchaseService;
 
     @GetMapping("/seller/profile")
     public String sellerProfile(Model model, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userService.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        User user = userUtil.isExistUser(authentication.getName());
 
         model.addAttribute("user", user);
 

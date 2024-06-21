@@ -17,6 +17,7 @@ import ru.marketplace.server.repositories.users.UserRepository;
 import ru.marketplace.server.services.cart.CartService;
 import ru.marketplace.server.services.delivery.DeliveryPointService;
 import ru.marketplace.server.services.products.ProductService;
+import ru.marketplace.server.utils.UserUtil;
 
 import java.math.BigDecimal;
 import java.security.Principal;
@@ -33,11 +34,11 @@ public class CartController {
     private final ProductService productService;
     private final UserRepository userRepository;
     private final DeliveryPointService deliveryPointService;
+    private final UserUtil userUtil;
 
     @GetMapping("/cart")
-    public String viewCart(Model model, Principal principal, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public String viewCart(Model model, Authentication authentication) {
+        User user = userUtil.isExistUser(authentication.getName());
         Cart cart = cartService.getCartByUser(user);
 
         if (!cart.isTimerStarted() || cart.getItems().isEmpty()) {
@@ -61,8 +62,7 @@ public class CartController {
 
     @PostMapping("/cart/add/{productId}")
     public String addToCart(@PathVariable Long productId, @RequestParam int quantity, Principal principal, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        User user = userUtil.isExistUser(authentication.getName());
         Optional<Product> productOptional = productService.getProductById(productId);
         if (productOptional.isPresent()) {
             Product product = productOptional.get();
@@ -74,18 +74,15 @@ public class CartController {
     }
 
     @PostMapping("/cart/remove/{itemId}")
-    public String removeFromCart(@PathVariable Long itemId, Principal principal, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+    public String removeFromCart(@PathVariable Long itemId, Authentication authentication) {
+        User user = userUtil.isExistUser(authentication.getName());
         cartService.removeFromCart(user, itemId);
         return "redirect:/cart";
     }
 
     @PostMapping("/cart/checkout")
-    public String checkoutCart(@RequestParam Long deliveryPointId, Principal principal, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    public String checkoutCart(@RequestParam Long deliveryPointId, Authentication authentication) {
+        User user = userUtil.isExistUser(authentication.getName());
         DeliveryPoint deliveryPoint = deliveryPointService.findById(deliveryPointId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid delivery point ID"));
 
