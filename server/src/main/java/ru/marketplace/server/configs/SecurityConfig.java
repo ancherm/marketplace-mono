@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 @AllArgsConstructor
 public class SecurityConfig {
 
@@ -28,7 +27,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .requestMatchers("/seller/**").hasAnyRole("SELLER")
                         .requestMatchers("/catalog/**", "/cart/**", "/user/**").hasAnyRole("BUYER")
-                        .requestMatchers("/registration", "/login").permitAll()
+                        .requestMatchers("/registration", "/login", "/error/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

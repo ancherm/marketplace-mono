@@ -4,20 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="check1">
+    <list default="true" id="8a7c78dd-5a20-4a4d-9f30-9ceda9a816f3" name="Changes" comment="before exam">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/admin/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/admin/catalog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/ServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SchedulingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SchedulingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/configs/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/cart/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/cart/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/PhotoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/PhotoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/controllers/products/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/users/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/repositories/users/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/users/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/services/users/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ru/marketplace/server/utils/CategoryConverter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/admin/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/admin/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/admin/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/admin/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/cart/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/cart/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/catalog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/products/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/seller/edit-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/seller/edit-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/seller/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/seller/add-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/seller/add-product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/seller/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/seller/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/users/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/users/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/resources/templates/users/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/templates/users/registration.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +28,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -54,33 +56,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/LearningAtUnivercity/Semester3/marketplace-mono/server/src/main/resources/templates/admin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "File.Encoding",
-    "spring.configuration.checksum": "cf1e8c14e54505f60aa10ceb8d5d8ab3",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/LearningAtUnivercity/Semester3/marketplace-mono/server/src/main/resources/templates/admin&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;cf1e8c14e54505f60aa10ceb8d5d8ab3&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.1.2\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\LearningAtUnivercity\Semester3\marketplace-mono\server\src\main\resources\templates\admin" />
@@ -161,7 +163,8 @@
       <workItem from="1718642732322" duration="14537000" />
       <workItem from="1718718645816" duration="18247000" />
       <workItem from="1718793413877" duration="15440000" />
-      <workItem from="1718891937933" duration="41741000" />
+      <workItem from="1718891937933" duration="41972000" />
+      <workItem from="1718944400880" duration="10623000" />
     </task>
     <task id="LOCAL-00001" summary="edit web">
       <created>1718379753441</created>
@@ -275,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1718936150472</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="before exam">
+      <created>1718940851521</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718940851522</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +319,7 @@
     <MESSAGE value="Добавлен профиль покупателя" />
     <MESSAGE value="Добавлен админ" />
     <MESSAGE value="check1" />
-    <option name="LAST_COMMIT_MESSAGE" value="check1" />
+    <MESSAGE value="before exam" />
+    <option name="LAST_COMMIT_MESSAGE" value="before exam" />
   </component>
 </project>

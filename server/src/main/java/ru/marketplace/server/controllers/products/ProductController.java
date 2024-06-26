@@ -10,6 +10,7 @@ import ru.marketplace.server.entities.products.Category;
 import ru.marketplace.server.entities.products.Product;
 import ru.marketplace.server.entities.products.ProductReview;
 import ru.marketplace.server.entities.users.User;
+import ru.marketplace.server.exception.ErrorHandler;
 import ru.marketplace.server.services.cart.PurchaseService;
 import ru.marketplace.server.services.products.CategoryService;
 import ru.marketplace.server.services.products.ProductService;
@@ -31,7 +32,9 @@ public class ProductController {
     private final PurchaseService purchaseService;
     private final UserUtil userUtil;
 
+
     @GetMapping("/catalog")
+    @ExceptionHandler
     public String getProducts(@RequestParam(required = false) Long categoryId,
                               @RequestParam(required = false) String search,
                               Model model) {
@@ -70,7 +73,12 @@ public class ProductController {
     }
 
     @PostMapping("/catalog/{id}/review")
-    public String addReview(@PathVariable Long id, @RequestParam String reviewerName, @RequestParam String content, @RequestParam int rating, Authentication authentication) {
+    public String addReview(@PathVariable Long id,
+                            @RequestParam String reviewerName,
+                            @RequestParam String content,
+                            @RequestParam int rating,
+                            Authentication authentication) {
+
         Optional<Product> productOptional = productService.getProductById(id);
         User user = userUtil.isExistUser(authentication.getName());
 

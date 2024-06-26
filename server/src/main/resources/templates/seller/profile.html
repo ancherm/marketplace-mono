@@ -8,6 +8,23 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
         }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            /*background-color: #0082e6;*/
+            padding: 0 20px;
+            margin: 20px;
+        }
+        .navbar-brand {
+            color: black;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            margin-left: 10px;
+        }
         .container {
             margin-top: 20px;
         }
@@ -49,6 +66,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse">
+        <a class="nav-link" th:href="@{/seller/product/add}">Добавить товар</a>
         <a class="nav-link" th:href="@{/logout}">Выход</a>
     </div>
 </nav>

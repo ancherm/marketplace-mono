@@ -5,10 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.marketplace.server.entities.cart.Cart;
 import ru.marketplace.server.entities.delivery.DeliveryPoint;
 import ru.marketplace.server.entities.products.Product;
@@ -32,7 +29,6 @@ public class CartController {
 
     private final CartService cartService;
     private final ProductService productService;
-    private final UserRepository userRepository;
     private final DeliveryPointService deliveryPointService;
     private final UserUtil userUtil;
 
@@ -61,7 +57,7 @@ public class CartController {
     }
 
     @PostMapping("/cart/add/{productId}")
-    public String addToCart(@PathVariable Long productId, @RequestParam int quantity, Principal principal, Authentication authentication) {
+    public String addToCart(@PathVariable Long productId, @RequestParam int quantity, Authentication authentication) {
         User user = userUtil.isExistUser(authentication.getName());
         Optional<Product> productOptional = productService.getProductById(productId);
         if (productOptional.isPresent()) {

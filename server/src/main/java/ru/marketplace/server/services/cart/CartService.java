@@ -27,7 +27,7 @@ public class CartService {
     private final ProductRepository productRepository;
     private final PurchaseRepository purchaseRepository;
 
-    private final int timeMinutesLeft = 2;
+    private final int timeMinutesLeft = 5;
 
     public int getTimeMinutesLeft() {
         return timeMinutesLeft;
